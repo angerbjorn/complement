@@ -1,0 +1,30 @@
+<?xml version="1.0" ?>
+<NessusClientData_v2>
+	<Report>
+		<ReportHost name="192.168.2.100">
+			<ReportItem pluginFamily="Complementary findings" pluginID="999762" pluginName="Default administrative password" port="443" protocol="tcp" severity="3" svc_name="www">
+				<risk_factor>High</risk_factor>
+				<description>The default administrative password has not been changed.</description>
+				<solution>Please change the password</solution>
+				<plugin_output>URL: https://192.168.2.100/ Password used: admin/admin</plugin_output>
+			</ReportItem>
+		</ReportHost>
+		<ReportHost name="192.168.2.120">
+			<ReportItem pluginFamily="Complementary findings" pluginID="999762" pluginName="Default administrative password" port="80" protocol="tcp" severity="3" svc_name="www">
+				<risk_factor>High</risk_factor>
+				<description>The default administrative password has not been changed.</description>
+				<solution>Please change the password</solution>
+				<plugin_output>URL: http://192.168.2.120/ Password used: admin/password</plugin_output>
+			</ReportItem>
+		</ReportHost>
+		<ReportHost name="192.168.2.120">
+			<ReportItem pluginFamily="Complementary findings" pluginID="944719" pluginName="SQL Injection" port="443" protocol="tcp" severity="4" svc_name="www">
+				<risk_factor>Critical</risk_factor>
+				<description>SQL injection found on the login form</description>
+				<solution>Use parameterized sql queries</solution>
+				<plugin_output>Injected data: 'union select @@version,1,1,1 --</plugin_output>
+			</ReportItem>
+		</ReportHost>
+	</Report>
+</NessusClientData_v2>
+
