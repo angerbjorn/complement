@@ -10,7 +10,6 @@ from xml.dom.minidom import parseString
 
 if __name__ == "__main__":
 	parser = optparse.OptionParser(usage="Usage: %prog [OPTION]... <SPREADSHEET.xlsx>...", description="Generates a complementary .nessus v2 file from one or more excel spreadsheets.", epilog='Open Source MIT License. Written by Christian Angerbjorn')
-	parser.add_option("-v", "--verbose", action="store_true")
 	parser.add_option("-o", "--output-file", help='Save data to this .nessus file')
 	parser.add_option("-t", "--make-template", help='Create an example excel template file, and exit.')
 	(ops, args) = parser.parse_args()

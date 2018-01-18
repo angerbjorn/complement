@@ -10,7 +10,7 @@ That is what Complement is there for; add complementary vulnerabilities to an ex
 
 First thing needed is to make an example spreadsheet as a template to use:
 ```
-python3 complement.py --make-template example/complementary_findings.xlsx
+$ python3 complement.py --make-template example/complementary_findings.xlsx
 ```
 
 ![image of excel example template](/example/complementary_findings.png) 
@@ -38,12 +38,12 @@ Some special columns are needed:
 
 One or more excel spreadsheets can be added as input. Output is the .nessus v2 xml:
 ```
-python3 complement.py example/complementary_findings.xlsx --output-file example/complementary_findings.nessus 
+$ python3 complement.py example/complementary_findings.xlsx --output-file example/complementary_findings.nessus 
 ```
 
 The result can be examined with for example the butcher:
 ```
-python3 ../butcher/butcher.py example/complementary_findings.nessus --long
+$ python3 ../butcher/butcher.py example/complementary_findings.nessus --long
 ID	severity	pluginName	IP
 948095	Critical	SQL Injection	192.168.2.120
 999762	High	Default administrative password	192.168.2.100
@@ -53,7 +53,7 @@ ID	severity	pluginName	IP
 ### Merge findings with scan results 
 To merge findings you neen the butcher to compile new output:
 ```
-python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus  example/complementary_findings.nessus --min-severity Critical 
+$ python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus  example/complementary_findings.nessus --min-severity Critical 
 ID	severity	pluginName	IP
 948095	Critical	SQL Injection	192.168.2.120
 63145	Critical	USN-1638-3 : firefox regressions	192.168.1.43
@@ -64,7 +64,7 @@ Please note that the first finding is from the spreadsheet, and remaing from the
 
 Here is a html example as well:
 ```
-python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus example/complementary_findings.nessus --format html --output-file example/merged-findings.html
+$ python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus example/complementary_findings.nessus --format html --output-file example/merged-findings.html
 ```	
 ![image of a merged HTML report](/example/merged-findings.png) 
 
@@ -84,11 +84,29 @@ Everything not attributes are elements, such as synopsis:
 
 Use for example the butcher's --format xml to inspect your output data and find out how nessus typically stores data:
 ``` 
-python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus --id 63145 --format xml | head
+$ python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus --id 63145 --format xml | head
 <?xml version="1.0" ?><ReportItem pluginFamily="Ubuntu Local Security Checks" pluginID="63145" pluginName="USN-1638-3 : firefox regressions" port="0" protocol="tcp" severity="4" svc_name="general">	
 	<cpe>cpe:/o:canonical:ubuntu_linux</cpe>	
 	<cve>CVE-2012-4201</cve>	
 	<cve>CVE-2012-4202</cve>	
+```
+
+
+### The Complement --help page
+```
+$ python3 complement.py --help
+Usage: complement.py [OPTION]... <SPREADSHEET.xlsx>...
+
+Generates a complementary .nessus v2 file from one or more excel spreadsheets.
+
+Options:
+  -h, --help            show this help message and exit
+  -o OUTPUT_FILE, --output-file=OUTPUT_FILE
+                        Save data to this .nessus file
+  -t MAKE_TEMPLATE, --make-template=MAKE_TEMPLATE
+                        Create an example excel template file, and exit.
+
+Open Source MIT License. Written by Christian Angerbjorn
 ```
 
 ## Prerequisites
