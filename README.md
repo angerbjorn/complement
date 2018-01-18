@@ -13,7 +13,7 @@ First thing needed is to make an example spreadsheet as a template to use:
 python3 complement.py --make-template example/complementary_findings.xlsx
 ```
 
-![image of excel example template](/examples/excel.png) 
+![image of excel example template](/example/complementary_findings.png) 
 
 
 ## Editing the excel spreadsheet
@@ -66,7 +66,7 @@ Here is a html example as well:
 ```
 python3 ../butcher/butcher.py ../butcher/examples/example_scan.nessus example/complementary_findings.nessus --format html --output-file example/merged-findings.html
 ```	
-![image of a merged HTML report](/examples/merged-findings.png) 
+![image of a merged HTML report](/example/merged-findings.png) 
 
 
 ### Adding additional columns 
